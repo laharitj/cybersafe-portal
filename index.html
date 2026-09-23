@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LahariVault</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Encryption Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+</head>
+<body>
+
+<!-- Setup Screen (new user) -->
+
+<div id="setupPage" class="screen hidden">
+
+    <div class="login-card">
+
+        <h1>🔐 LahariVault</h1>
+
+        <p>Create your vault to get started</p>
+
+        <input type="password"
+               id="setupPin"
+               maxlength="6"
+               placeholder="Create 6-digit Master PIN">
+
+        <input type="password"
+               id="setupPinConfirm"
+               maxlength="6"
+               placeholder="Confirm Master PIN">
+
+        <button onclick="createVault()">Create Vault</button>
+
+        <button class="forgot-password" type="button" onclick="showLoginPage()">Already have a vault? Log In</button>
+
+        <small id="setupMsg"></small>
+
+    </div>
+
+</div>
+
+<!-- Login Screen -->
+
+<div id="loginPage" class="screen hidden">
+
+    <div class="login-card">
+
+        <h1>🔐 LahariVault</h1>
+
+        <p>Your Secure Password Manager</p>
+
+        <input type="password"
+               id="masterPin"
+               maxlength="6"
+               placeholder="Enter 6-digit Master PIN">
+
+        <button onclick="unlockVault()">Unlock Vault</button>
+
+        <button class="forgot-password" type="button" onclick="openForgotPassword()">Forgot Password?</button>
+
+        <button class="forgot-password" type="button" onclick="showSetupPage()">New user? Sign Up</button>
+
+        <small id="loginMsg"></small>
+
+    </div>
+
+</div>
+
+<!-- Vault -->
+
+<div id="vaultPage" class="hidden">
+
+    <header>
+
+        <h1>🔐 LahariVault</h1>
+
+        <button class="logout" onclick="logout()">Logout</button>
+
+    </header>
+
+    <div class="card">
+
+        <input id="website" type="text" placeholder="Website">
+
+        <input id="username" type="text" placeholder="Username">
+
+        <div class="password-row">
+
+            <input id="password" type="password" placeholder="Password">
+
+            <button onclick="toggleInput()">👁</button>
+
+        </div>
+
+        <button class="save" onclick="saveAccount()">Save Account</button>
+
+    </div>
+
+    <input id="search"
+           class="search"
+           type="text"
+           placeholder="Search..."
+           onkeyup="displayAccounts()">
+
+    <div id="accountList"></div>
+
+</div>
+
+<div id="forgotModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="forgotTitle">
+    <div class="details-card forgot-card">
+        <div class="details-header">
+            <h2 id="forgotTitle">Forgot Password?</h2>
+            <button class="close-details" onclick="closeForgotPassword()" aria-label="Close forgot password">&times;</button>
+        </div>
+
+        <p class="forgot-copy">Enter your email to request a password reset.</p>
+        <input id="resetEmail" type="email" placeholder="Enter your email address">
+        <button class="send-reset" onclick="requestPasswordReset()">Send Reset Request</button>
+        <small id="resetMsg"></small>
+    </div>
+</div>
+
+<div id="detailsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
+    <div class="details-card">
+        <div class="details-header">
+            <h2 id="detailsTitle">Account Details</h2>
+            <button class="close-details" onclick="closeDetails()" aria-label="Close details">&times;</button>
+        </div>
+
+        <div class="detail-field">
+            <span>Website</span>
+            <strong id="detailsWebsite"></strong>
+        </div>
+        <div class="detail-field">
+            <span>Username</span>
+            <strong id="detailsUsername"></strong>
+        </div>
+        <div class="detail-field">
+            <span>Password</span>
+            <div class="detail-password">
+                <input id="detailsPassword" type="password" readonly>
+                <button onclick="toggleDetailsPassword()" aria-label="Show password">👁</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
