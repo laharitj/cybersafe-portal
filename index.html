@@ -1,154 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LahariVault</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Encryption Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071326">
+  <title>Banking Cyber Awareness Portal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- Setup Screen (new user) -->
-
-<div id="setupPage" class="screen hidden">
-
-    <div class="login-card">
-
-        <h1>🔐 LahariVault</h1>
-
-        <p>Create your vault to get started</p>
-
-        <input type="password"
-               id="setupPin"
-               maxlength="6"
-               placeholder="Create 6-digit Master PIN">
-
-        <input type="password"
-               id="setupPinConfirm"
-               maxlength="6"
-               placeholder="Confirm Master PIN">
-
-        <button onclick="createVault()">Create Vault</button>
-
-        <button class="forgot-password" type="button" onclick="showLoginPage()">Already have a vault? Log In</button>
-
-        <small id="setupMsg"></small>
-
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" id="homeBrand" href="#home" aria-label="Banking Cyber Awareness Portal home"><span class="brand-mark">B</span><span id="brandName">Banking Cyber Awareness Portal</span></a>
+    <nav id="mainNavigation" aria-label="Main navigation">
+      <a href="#animations" data-i18n="navAnimations">Animations</a>
+      <a href="#games" data-i18n="navGames">Games</a>
+      <a href="#quizzes" data-i18n="navQuizzes">Questionnaires / Quizzes</a>
+      <a href="#resources" data-i18n="navHelp">Help</a>
+    </nav>
+    <div class="header-actions">
+      <button class="language-switch" id="changeLanguage" type="button" aria-label="Change language">EN ▾</button>
+      <button class="ghost-button dashboard-button" type="button" data-route="progress" data-i18n="navProgress">My Progress</button>
     </div>
+  </header>
 
-</div>
-
-<!-- Login Screen -->
-
-<div id="loginPage" class="screen hidden">
-
-    <div class="login-card">
-
-        <h1>🔐 LahariVault</h1>
-
-        <p>Your Secure Password Manager</p>
-
-        <input type="password"
-               id="masterPin"
-               maxlength="6"
-               placeholder="Enter 6-digit Master PIN">
-
-        <button onclick="unlockVault()">Unlock Vault</button>
-
-        <button class="forgot-password" type="button" onclick="openForgotPassword()">Forgot Password?</button>
-
-        <button class="forgot-password" type="button" onclick="showSetupPage()">New user? Sign Up</button>
-
-        <small id="loginMsg"></small>
-
-    </div>
-
-</div>
-
-<!-- Vault -->
-
-<div id="vaultPage" class="hidden">
-
-    <header>
-
-        <h1>🔐 LahariVault</h1>
-
-        <button class="logout" onclick="logout()">Logout</button>
-
-    </header>
-
-    <div class="card">
-
-        <input id="website" type="text" placeholder="Website">
-
-        <input id="username" type="text" placeholder="Username">
-
-        <div class="password-row">
-
-            <input id="password" type="password" placeholder="Password">
-
-            <button onclick="toggleInput()">👁</button>
-
+  <main id="main-content">
+    <section class="page active-page" data-page="home">
+      <section class="banking-hero">
+        <div>
+          <p class="eyebrow" data-i18n="heroEyebrow">Practical awareness for safer banking</p>
+          <h1 data-i18n="heroTitle">Banking Cyber Awareness Portal</h1>
+          <p class="hero-text" data-i18n="heroDescription">Learn to identify online banking frauds through animations, interactive games and quizzes.</p>
+          <div class="hero-links">
+            <a class="primary-button" href="#animations" data-i18n="heroAnimations">Explore animations</a>
+            <a class="secondary-button" href="#games" data-i18n="heroGames">Play a game</a>
+          </div>
         </div>
+        <div class="banking-hero-art" aria-hidden="true"><div class="bank-building"><span>₹</span><i></i><i></i><i></i><b></b></div><div class="art-shield">✓</div><div class="art-caption" id="artCaption">SECURE BANKING</div></div>
+      </section>
 
-        <button class="save" onclick="saveAccount()">Save Account</button>
-
-    </div>
-
-    <input id="search"
-           class="search"
-           type="text"
-           placeholder="Search..."
-           onkeyup="displayAccounts()">
-
-    <div id="accountList"></div>
-
-</div>
-
-<div id="forgotModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="forgotTitle">
-    <div class="details-card forgot-card">
-        <div class="details-header">
-            <h2 id="forgotTitle">Forgot Password?</h2>
-            <button class="close-details" onclick="closeForgotPassword()" aria-label="Close forgot password">&times;</button>
+      <section class="learning-methods content-width">
+        <div class="section-title"><p class="eyebrow" data-i18n="learningEyebrow">Learning methods</p><h2 data-i18n="learningTitle">Choose how to learn</h2></div>
+        <div class="method-grid">
+          <a class="method-card" href="#animations"><span class="method-icon">▶</span><div><h3 data-i18n="animationsTitle">Banking safety animations</h3><p data-i18n="animationsIntro">Watch practical examples of common banking fraud and how to respond.</p></div><b aria-hidden="true">→</b></a>
+          <a class="method-card" href="#games"><span class="method-icon">⌕</span><div><h3 data-i18n="gamesTitle">Interactive games</h3><p data-i18n="gamesIntro">Practise spotting risky messages, payment requests and ATM situations.</p></div><b aria-hidden="true">→</b></a>
+          <a class="method-card" href="#quizzes"><span class="method-icon">✓</span><div><h3 data-i18n="quizzesTitle">Questionnaires / Quizzes</h3><p data-i18n="quizzesIntro">Check your understanding with short questions and explanations.</p></div><b aria-hidden="true">→</b></a>
         </div>
+      </section>
 
-        <p class="forgot-copy">Enter your email to request a password reset.</p>
-        <input id="resetEmail" type="email" placeholder="Enter your email address">
-        <button class="send-reset" onclick="requestPasswordReset()">Send Reset Request</button>
-        <small id="resetMsg"></small>
-    </div>
-</div>
+      <section class="home-help content-width">
+        <div><p class="eyebrow" data-i18n="helpEyebrow">India · financial cyber fraud</p><h2 data-i18n="helpTitle">Report fraud promptly</h2><p data-i18n="helpSummary">Contact your bank through verified channels and report financial cyber fraud using the national helpline.</p></div>
+        <a class="helpline-number" href="tel:1930"><small data-i18n="helplineLabel">National cyber fraud helpline</small><strong>1930</strong></a>
+        <a class="text-link" href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer" data-i18n="portalLink">Open official reporting portal ↗</a>
+      </section>
+    </section>
 
-<div id="detailsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
-    <div class="details-card">
-        <div class="details-header">
-            <h2 id="detailsTitle">Account Details</h2>
-            <button class="close-details" onclick="closeDetails()" aria-label="Close details">&times;</button>
-        </div>
+    <section class="page" data-page="animations"><div class="content-width page-shell"><button class="back-button" data-route="home" data-i18n="backHome">← Home</button><div class="section-title"><p class="eyebrow" data-i18n="animationsEyebrow">Banking fraud awareness</p><h1 data-i18n="animationsTitle">Banking safety animations</h1><p class="page-description" data-i18n="animationsIntro">Watch practical examples of common banking fraud and how to respond.</p></div><div id="animationPage"></div></div></section>
+    <section class="page" data-page="games"><div class="content-width page-shell"><button class="back-button" data-route="home" data-i18n="backHome">← Home</button><div class="section-title"><p class="eyebrow" data-i18n="gamesEyebrow">Safe mini games</p><h1 data-i18n="gamesTitle">Interactive games</h1><p class="page-description" data-i18n="gamesIntro">Practise spotting risky messages, payment requests and ATM situations.</p></div><div id="gamePage"></div></div></section>
+    <section class="page" data-page="quizzes"><div class="content-width page-shell"><button class="back-button" data-route="home" data-i18n="backHome">← Home</button><div class="section-title"><p class="eyebrow" data-i18n="quizzesEyebrow">Knowledge check</p><h1 data-i18n="quizzesTitle">Questionnaires / Quizzes</h1><p class="page-description" data-i18n="quizzesIntro">Check your understanding with short questions and explanations.</p></div><div id="quizPage"></div></div></section>
+    <section class="page" data-page="progress"><div class="content-width page-shell"><button class="back-button" data-route="home" data-i18n="backHome">← Home</button><div class="section-title"><p class="eyebrow" data-i18n="progressEyebrow">Saved on this device</p><h1 data-i18n="progressTitle">My Progress</h1><p class="page-description" data-i18n="progressIntro">Your counts update as you complete learning activities.</p></div><div class="progress-grid" id="progressGrid"></div><p class="progress-empty" id="progressEmpty"></p></section>
+    <section class="page" data-page="resources"><div class="content-width page-shell"><button class="back-button" data-route="home" data-i18n="backHome">← Home</button><div class="section-title"><p class="eyebrow" data-i18n="helpEyebrow">India · financial cyber fraud</p><h1 data-i18n="helpTitle">Report fraud promptly</h1><p class="page-description" data-i18n="helpSummary">Contact your bank through verified channels and report financial cyber fraud using the national helpline.</p></div><div class="help-grid"><article class="help-card"><span>01</span><h2 data-i18n="bankContactTitle">Contact your bank</h2><p data-i18n="bankContactCopy">Use the phone number or support option in your official banking app, card, or bank website. Do not rely on details in a suspicious message.</p></article><article class="help-card"><span>02</span><h2 data-i18n="helplineLabel">National cyber fraud helpline</h2><a class="helpline-number" href="tel:1930"><strong>1930</strong></a><p data-i18n="helplineCopy">In India, call 1930 promptly to report suspected financial cyber fraud.</p></article><article class="help-card"><span>03</span><h2 data-i18n="portalTitle">Official reporting portal</h2><p data-i18n="portalCopy">Submit a cybercrime report through the Government of India's official portal.</p><a class="primary-button" href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer" data-i18n="portalLink">Open official reporting portal ↗</a></article></div></div></section>
+  </main>
 
-        <div class="detail-field">
-            <span>Website</span>
-            <strong id="detailsWebsite"></strong>
-        </div>
-        <div class="detail-field">
-            <span>Username</span>
-            <strong id="detailsUsername"></strong>
-        </div>
-        <div class="detail-field">
-            <span>Password</span>
-            <div class="detail-password">
-                <input id="detailsPassword" type="password" readonly>
-                <button onclick="toggleDetailsPassword()" aria-label="Show password">👁</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="script.js"></script>
-
+  <footer><div class="brand"><span class="brand-mark">B</span><span id="footerBrand">Banking Cyber Awareness Portal</span></div><p data-i18n="footerNote">Banking fraud awareness · India</p><a href="#resources" data-i18n="navHelp">Help</a></footer>
+  <div class="language-gate" id="languageGate" role="dialog" aria-modal="true" aria-labelledby="languageHeading">
+    <div class="language-panel"><span class="brand-mark">B</span><p class="eyebrow" id="languageBrand">Banking Cyber Awareness Portal</p><h1 id="languageHeading">Choose your language</h1><p>Select a language to continue. You can change it at any time.</p><div class="language-options"><button type="button" data-language="en"><strong>English</strong><span>Continue in English</span></button><button type="button" data-language="hi"><strong>हिन्दी</strong><span>हिंदी में जारी रखें</span></button><button type="button" data-language="kn"><strong>ಕನ್ನಡ</strong><span>ಕನ್ನಡದಲ್ಲಿ ಮುಂದುವರಿಯಿರಿ</span></button></div></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"><img src="assets/cyber-cursor.png" alt=""></div>
+  <script src="banking-content.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
