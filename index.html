@@ -27,15 +27,13 @@
     <section class="page active-page" data-page="home">
       <section class="banking-hero">
         <div>
-          <p class="eyebrow" data-i18n="heroEyebrow">Practical awareness for safer banking</p>
           <h1 data-i18n="heroTitle">Banking Cyber Awareness Portal</h1>
-          <p class="hero-text" data-i18n="heroDescription">Learn to identify online banking frauds through animations, interactive games and quizzes.</p>
           <div class="hero-links">
             <a class="primary-button" href="#animations" data-i18n="heroAnimations">Explore animations</a>
             <a class="secondary-button" href="#games" data-i18n="heroGames">Play a game</a>
           </div>
         </div>
-        <div class="banking-hero-art" aria-hidden="true"><div class="bank-building"><span>₹</span><i></i><i></i><i></i><b></b></div><div class="art-shield">✓</div><div class="art-caption" id="artCaption">SECURE BANKING</div></div>
+        <div class="banking-hero-art" id="heroSecurityVisual" aria-hidden="true"><div class="hero-grid"></div><span class="hero-orbit hero-orbit-one"></span><span class="hero-orbit hero-orbit-two"></span><div class="bank-building"><span>₹</span><i></i><i></i><i></i><b></b></div><div class="art-shield">✓</div><div class="art-caption" id="artCaption">SECURE BANKING</div></div>
       </section>
 
       <section class="learning-methods content-width">
@@ -68,6 +66,7 @@
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <div class="custom-cursor" id="customCursor" aria-hidden="true"><img src="assets/cyber-cursor.png" alt=""></div>
   <script src="banking-content.js"></script>
+  <script src="quiz-challenge.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
